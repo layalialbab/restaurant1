@@ -1,19 +1,8 @@
 const jwt = require('jsonwebtoken');
-
-const authMiddleware = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-
-  if (!token) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret-key');
-    req.admin = decoded;
-    next();
-  } catch (error) {
-    res.status(403).json({ error: 'Invalid token' });
-  }
+module.exports = (req, res, next) => {
+  if (!process.env.JWT_SECRET) return res.status(503).json({ error: 'Admin security is not configured' });
+  const token = req.headers.authorization?.startsWith('Bearer ') ? req.headers.authorization.slice(7) : null;
+  if (!token) return res.status(401).json({ error: 'يلزم تسجيل الدخول' });
+  try { const payload = jwt.verify(token, process.env.JWT_SECRET); if (payload.role !== 'admin') throw new Error('role'); req.admin = payload; next(); }
+  catch { return res.status(401).json({ error: 'انتهت الجلسة أو أن رمز الدخول غير صالح' }); }
 };
-
-module.exports = authMiddleware;

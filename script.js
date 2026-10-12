@@ -48,7 +48,7 @@ const defaultMenu = [
 ];
 
 const defaultSettings = {
-  phone: "966500000000",
+  phone: "+963991094644",
   address: "مقابل الجامع الكبير عند تقاطع شارع عصفور",
   city: "مدينة الباب",
   mapQuery: "مدينة الباب مقابل الجامع الكبير عند تقاطع شارع عصفور",
@@ -274,11 +274,28 @@ function handleCheckout() {
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank", "noopener,noreferrer");
 }
 
-function initHomePage() {
+async function initHomePage() {
+  try {
+    const [menuResponse, settingsResponse] = await Promise.all([fetch("/api/menu"), fetch("/api/settings")]);
+    if (menuResponse.ok) {
+      const menu = await menuResponse.json();
+      if (Array.isArray(menu) && menu.length) localStorage.setItem(STORAGE_MENU, JSON.stringify(menu.map(x => ({...x, id:x.id || x._id}))));
+    }
+    if (settingsResponse.ok) {
+      const s = await settingsResponse.json();
+      localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({
+        phone: s.restaurantPhone || "+963991094644",
+        city: s.restaurantCity || "مدينة الباب",
+        address: s.restaurantAddress || "مقابل الجامع الكبير عند تقاطع شارع عصفور",
+        mapQuery: s.mapQuery || "مدينة الباب مقابل الجامع الكبير عند تقاطع شارع عصفور",
+        whatsappMessage: s.whatsappMessage || "السلام عليكم، أريد الطلب التالي من مطعم ليالي الباب:",
+        currency: s.currency || "TRY"
+      }));
+    }
+  } catch (e) { console.warn("تعذر تحميل بيانات الخادم؛ سيتم عرض البيانات المحلية مؤقتاً."); }
   updateRestaurantInfo();
   renderMenu();
   renderCart();
-
   document.getElementById("checkoutButton").addEventListener("click", handleCheckout);
 }
 
