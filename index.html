@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ليالي الباب | مطعم وجبات سريعة</title>
+    <meta
+      name="description"
+      content="منيو مطعم ليالي الباب - وجبات سريعة - طلبات واتساب - مدينة الباب"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand-wrap">
+          <div class="badge">🍔</div>
+          <div>
+            <p class="mini">مطعم</p>
+            <h1>ليالي الباب</h1>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#menu">المنيو</a>
+          <a href="#about">العنوان</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+
+        <a href="admin.html" class="admin-link">لوحة الإدارة</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="tag">وجبات سريعة • توصيل • طلبات واتساب</span>
+            <h2>أشهى الوجبات في مدينة الباب</h2>
+            <p>
+              منيو مميز بأسعار مناسبة، جودة عالية، وخدمة سريعة. اطلب الآن عبر واتساب
+              مباشرة من موقعنا الإلكتروني.
+            </p>
+
+            <div class="cta-row">
+              <a href="#menu" class="primary-btn">الطلب من المنيو</a>
+              <a id="whatsappButton" class="secondary-btn" target="_blank" rel="noreferrer">اطلب الآن</a>
+            </div>
+
+            <div class="hero-stats">
+              <div>
+                <strong id="itemsCount">0</strong>
+                <span>صنف</span>
+              </div>
+              <div>
+                <strong>15-30</strong>
+                <span>دقيقة</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>خدمة</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="image-frame">
+              <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+                alt="وجبات سريعة"
+              />
+            </div>
+            <div class="hero-badges">
+              <span>أكثر طلباً</span>
+              <span>شاورما اللحم</span>
+              <span>برجر وسندويتشات</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="small-tag">منيو المطعم</span>
+              <h3>اختَر طلبك المفضل</h3>
+            </div>
+            <div class="cart-summary" id="cartSummary">السلة فارغة</div>
+          </div>
+
+          <div id="menuCategories" class="menu-grid"></div>
+        </div>
+      </section>
+
+      <section id="about" class="location-section">
+        <div class="container location-box">
+          <div class="loc-text">
+            <span class="small-tag">عنواننا</span>
+            <h3>موقع المطعم في مدينة الباب</h3>
+            <p id="restaurantAddress">مقابل الجامع الكبير عند تقاطع شارع عصفور</p>
+
+            <div class="meta-list">
+              <div>
+                <span>📍</span>
+                <p id="restaurantLocationLabel">مدينة الباب - مقابل الجامع الكبير</p>
+              </div>
+              <div>
+                <span>📞</span>
+                <p id="restaurantPhoneLabel">+966500000000</p>
+              </div>
+            </div>
+
+            <a id="mapLink" class="primary-btn" target="_blank" rel="noreferrer">فتح الموقع على الخريطة</a>
+          </div>
+
+          <div class="map-card">
+            <iframe
+              id="mapFrame"
+              src="https://www.google.com/maps?q=%D9%85%D9%84%D9%82%D8%A9%20%D8%A8%D8%A7%D8%A8%20%D9%85%D9%82%D8%B3%D8%AA%D9%82%D8%AD%20%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="موقع المطعم"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="floating-cart" id="floatingCart">
+      <div class="cart-header">
+        <h4>السلة</h4>
+        <span id="cartItemsCount">0</span>
+      </div>
+
+      <div id="cartList" class="cart-list"></div>
+
+      <div class="cart-total-row">
+        <span>المجموع</span>
+        <strong id="cartTotal">0</strong>
+      </div>
+
+      <button id="checkoutButton" class="checkout-btn">إرسال الطلب عبر واتساب</button>
+    </aside>
+
+    <footer id="contact" class="footer">
+      <div class="container footer-inner">
+        <div>
+          <h4>ليالي الباب</h4>
+          <p>مطعم وجبات سريعة في مدينة الباب</p>
+        </div>
+
+        <div>
+          <p>العنوان: <span id="footerAddress">مقابل الجامع الكبير عند تقاطع شارع عصفور</span></p>
+          <p>واتساب: <a id="footerPhone" href="#">+966500000000</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

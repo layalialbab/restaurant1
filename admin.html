@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة إدارة مطعم ليالي الباب</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="admin-page">
+    <div class="container admin-shell">
+      <aside class="panel settings-panel">
+        <h2>إعدادات المطعم</h2>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="phoneInput">رقم الواتساب</label>
+            <input id="phoneInput" type="tel" placeholder="966500000000" />
+          </div>
+
+          <div class="field">
+            <label for="cityInput">اسم المدينة</label>
+            <input id="cityInput" type="text" placeholder="مدينة الباب" />
+          </div>
+
+          <div class="field">
+            <label for="addressInput">عنوان المطعم</label>
+            <input id="addressInput" type="text" placeholder="مقابل الجامع الكبير عند تقاطع شارع عصفور" />
+          </div>
+
+          <div class="field">
+            <label for="mapInput">نص البحث على الخريطة</label>
+            <input id="mapInput" type="text" placeholder="مدينة الباب مقابل الجامع الكبير" />
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <button id="saveSettingsBtn" class="save-btn">حفظ الإعدادات</button>
+          <a href="index.html" class="secondary-btn">عرض الموقع</a>
+        </div>
+      </aside>
+
+      <main class="panel menu-panel">
+        <h2>إدارة المنيو</h2>
+
+        <div class="menu-actions">
+          <button id="addItemBtn" class="add-btn">إضافة صنف جديد</button>
+          <button id="saveMenuBtn" class="save-btn">حفظ المنيو</button>
+          <button id="resetMenuBtn" class="reset-btn">إعادة التعيين</button>
+        </div>
+
+        <div id="menuEditor" class="menu-table"></div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
